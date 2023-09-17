@@ -6,23 +6,27 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { ProductOffersComponent } from './components/product-offers/product-offers.component';
-import { ProductRatingsComponent } from './components/product-ratings/product-ratings.component';
-import {ReactiveFormsModule} from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProductModule } from './product/product.module';
+import { HomeModule } from './home/home.module';
+import { AuthGuard } from './guard/auth.guard';
+import { DefaultComponent } from './default/default.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ProductListComponent,
     ProductDetailsComponent,
-    ProductOffersComponent,
-    ProductRatingsComponent
+    DefaultComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,ReactiveFormsModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    ProductModule,
+    HomeModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
